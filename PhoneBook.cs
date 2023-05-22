@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PhoneBook
 {
-    class PhoneBook
+    public class PhoneBook
     {
         public List<Contact> Contacts { get; set; } = new List<Contact>();
 
@@ -50,5 +50,36 @@ namespace PhoneBook
             var matchingContacts = Contacts.Where(c=> c.Name.Contains(searchPhrase)).ToList();
             DisplayContactsDetails(matchingContacts);
         }
+        //public void RemoveContact(String number)
+        //{
+        //    Contacts.Remove(number);
+
+        //}
+        public void DeleteContact(string number)
+
+        {
+
+            foreach (var element in Contacts)
+
+            {
+
+                if (element.Number == number)
+
+                {
+
+                    Contacts.RemoveAt(Contacts.IndexOf(element));
+
+                    Console.WriteLine("Contact removed.");
+
+                    return;
+
+                }
+
+            }
+
+            Console.WriteLine("invalid number");
+
+        }
+      
     }
 }

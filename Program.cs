@@ -1,4 +1,6 @@
-﻿namespace PhoneBook
+﻿using System.Linq;
+
+namespace PhoneBook
 {
     internal class Program
     {
@@ -9,6 +11,7 @@
             Console.WriteLine("2 Display Contact by number");
             Console.WriteLine("3 Display all contacts");
             Console.WriteLine("4 Search contacts");
+            Console.WriteLine("5 Remove contact");
             Console.WriteLine("Press 'x' to end.");
 
             var userInput = Console.ReadLine();
@@ -23,6 +26,16 @@
                         var name = Console.ReadLine();
                         Console.WriteLine("Add number");
                         var number = Console.ReadLine();
+                        int numericValue;
+                        bool IsNumber = int.TryParse(number, out numericValue);
+                        if (IsNumber)
+                        {
+                            Console.WriteLine("The number is correct. The contact added to your list.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("The number is not correct! Select operation again.");
+                        }
 
                         var newContact = new Contact(name, number);
                         phoneBook.AddContact(newContact);
@@ -41,6 +54,12 @@
                         Console.WriteLine("Insert search phrase");
                         var searchPhrase = Console.ReadLine();
                         phoneBook.DisplayMatchingContacts(searchPhrase);
+                        break;
+                    case "5":
+                        Console.WriteLine("Remove contact");
+                        Console.WriteLine("Insert a number");
+                        var searchContact = Console.ReadLine();
+                        phoneBook.DeleteContact(searchContact);
                         break;
                     case "x":
                         return;

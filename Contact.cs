@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace PhoneBook
 {
     
-     class Contact
+     public class Contact
     {
         public Contact(string name, string number)
         {
