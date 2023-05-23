@@ -26,16 +26,26 @@ namespace PhoneBook
                         var name = Console.ReadLine();
                         Console.WriteLine("Add number");
                         var number = Console.ReadLine();
-                        int numericValue;
-                        bool IsNumber = int.TryParse(number, out numericValue);
-                        if (IsNumber)
+                        if (number.Length == 9)
                         {
-                            Console.WriteLine("The number is correct. The contact added to your list.");
+
+                            int numericValue;
+                            bool IsNumber = int.TryParse(number, out numericValue);
+                            if (IsNumber)
+                            {
+                                Console.WriteLine("The number is correct. The contact added to your list.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("The number is not correct! Select operation again.");
+                            }
                         }
-                        else
+                        else if (number.Length < 9)
                         {
-                            Console.WriteLine("The number is not correct! Select operation again.");
+                            
+                            Console.WriteLine("The number is too short, try again.");
                         }
+                        else Console.WriteLine("The number is too long, try again.");
 
                         var newContact = new Contact(name, number);
                         phoneBook.AddContact(newContact);
